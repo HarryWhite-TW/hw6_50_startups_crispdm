@@ -1,3 +1,5 @@
+![50 Startups Profit Prediction CRISP-DM Workflow Showcase](assets/readme_hero.png)
+
 # Synthetic 50 Startups CRISP-DM Startup Profit Prediction
 
 ## Project Overview
