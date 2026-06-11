@@ -8,6 +8,10 @@ This project builds a beginner-friendly machine learning regression workflow for
 
 This project uses an AI-generated synthetic 50 Startups-style dataset for educational CRISP-DM workflow demonstration. The dataset is not used for real business research. The goal is to demonstrate the full machine learning workflow, not to claim real-world causal conclusions.
 
+Technical whitepaper:
+
+- [HW6 Technical Whitepaper](docs/HW6_TECHNICAL_WHITEPAPER.md)
+
 ## Dataset
 
 Dataset: AI-generated synthetic 50 Startups-style dataset
