@@ -815,3 +815,46 @@ The figure contains RMSE by number of features, R-squared by number of features,
 In the current synthetic dataset, methods that rank `R&D Spend` and `Marketing Spend` near the top usually perform well. This is consistent with the synthetic data generation formula, where those spending variables were assigned strong predictive signal. The result should be interpreted as a model workflow and feature selection demonstration only. It should not be used to claim that these variables cause startup profit in real business settings.
 
 The main limitation is that the dataset has only 50 rows and is generated from a simplified synthetic formula. Feature rankings can be sensitive to the train/test split, feature scale, method assumptions, and random variation. RFE, Lasso, univariate tests, forward selection, and Random Forest importance measure different ideas of "importance," so disagreement between rankings is expected and useful for discussion.
+## Interactive Dashboard Extension
+
+This project now includes a static GitHub Pages dashboard:
+
+```text
+index.html
+site/style.css
+site/app.js
+```
+
+The dashboard is intentionally lightweight and uses Vanilla HTML/CSS/JS with Chart.js from a CDN. It does not use npm, Vite, React, Streamlit, PPT, or video. The page presents the project as a homework showcase with a hero section, CRISP-DM six-step workflow, dataset overview, interactive state filter, model metrics, feature selection comparison, insight summary, and links back to README, `hw6.md`, the technical whitepaper, and `LOG.md`.
+
+The dashboard repeats the core scope statement: the dataset is an AI-generated synthetic 50 Startups-style dataset, used for educational CRISP-DM workflow demonstration only. It is not real business research and does not support real-world causal claims.
+
+## Visual Gallery Extension
+
+The project now includes `src/generate_visual_gallery.py`, a low-complexity script that reuses the existing `data/50_Startups.csv` file and generates additional static images for README and website display.
+
+Generated gallery outputs:
+
+- `outputs/dataset_overview_dashboard.png`
+- `outputs/spending_profit_relationships.png`
+- `outputs/correlation_heatmap.png`
+- `outputs/model_metrics_summary.png`
+
+The existing feature selection comparison image is preserved:
+
+- `outputs/feature_selection_performance_allinone.png`
+
+These images expand the visual analysis beyond a single figure while keeping the project reproducible and easy to review.
+
+## Project Log and Reproducibility
+
+The project now includes `LOG.md` as a concise process record. It documents the project start, synthetic dataset decision, core machine learning workflow, README showcase updates, whitepaper role, advanced feature selection comparison, interactive website extension, visual gallery outputs, GitHub delivery plan, and limitations.
+
+The log is intended to make the AI-assisted workflow traceable without changing the underlying dataset or overstating the analysis. The main reproducibility path remains:
+
+```text
+python src\generate_synthetic_startups.py
+python src\solve_50_startups_crispdm.py
+python src\feature_selection_comparison.py
+python src\generate_visual_gallery.py
+```

@@ -161,6 +161,44 @@ Example project outputs:
 - Feature selection performance plot
 - Saved model file
 
+### Interactive Dashboard and Visual Gallery
+
+The project also includes a static interactive dashboard for GitHub Pages:
+
+```text
+index.html
+site/style.css
+site/app.js
+```
+
+The dashboard presents the CRISP-DM workflow, dataset overview, interactive state filtering, model metrics, and feature selection comparison. It uses Vanilla HTML/CSS/JS and Chart.js from a CDN, without npm, Vite, React, Streamlit, PPT, or video.
+
+An additional gallery script creates more visual outputs:
+
+```text
+src/generate_visual_gallery.py
+```
+
+Generated gallery images:
+
+- `outputs/dataset_overview_dashboard.png`
+- `outputs/spending_profit_relationships.png`
+- `outputs/correlation_heatmap.png`
+- `outputs/model_metrics_summary.png`
+- `outputs/feature_selection_performance_allinone.png`
+
+These visuals are used for README and website presentation. They are still based on the same AI-generated synthetic teaching dataset and should not be interpreted as real business research.
+
+### Project Log
+
+The project includes a process record:
+
+```text
+LOG.md
+```
+
+The log documents the dataset decision, core ML workflow, README showcase, whitepaper, advanced feature selection, interactive website, visual gallery, GitHub delivery plan, and limitations. This supports reproducibility and makes the AI-assisted workflow easier to review.
+
 ## Conclusion
 
 This project demonstrates a complete CRISP-DM machine learning workflow for a regression problem. It uses an AI-generated synthetic 50 Startups-style dataset, prepares numeric and categorical features correctly, trains a Linear Regression model, evaluates it with multiple metrics, includes cross-validation for a small dataset, and saves the final model for future use.

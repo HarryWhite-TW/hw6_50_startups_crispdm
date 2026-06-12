@@ -1,3 +1,7 @@
+# 🚀 Interactive Demo
+
+[Open Interactive Dashboard](https://harrywhite-tw.github.io/hw6_50_startups_crispdm/)
+
 ![50 Startups Profit Prediction CRISP-DM Workflow Showcase](assets/readme_hero.png)
 
 ![Feature Selection Comparison - RMSE and R-squared by Number of Features](outputs/feature_selection_performance_allinone.png)
@@ -136,12 +140,22 @@ python src\solve_50_startups_crispdm.py
 python src\feature_selection_comparison.py
 ```
 
+6. Generate the visual gallery images.
+
+```bash
+python src\generate_visual_gallery.py
+```
+
 ## Results
 
 After running the scripts, the following files are generated:
 
 - `data/50_Startups.csv`
 - `outputs/feature_selection_performance.png`
+- `outputs/dataset_overview_dashboard.png`
+- `outputs/spending_profit_relationships.png`
+- `outputs/correlation_heatmap.png`
+- `outputs/model_metrics_summary.png`
 - `outputs/startup_profit_model.pkl`
 
 Actual model results from the current synthetic dataset:
@@ -177,3 +191,19 @@ python src\feature_selection_comparison.py
 ![Feature Selection Comparison](outputs/feature_selection_performance_allinone.png)
 
 In the current synthetic dataset, methods that rank `R&D Spend` and `Marketing Spend` early tend to perform well because those variables were designed to carry strong predictive signal in the synthetic generation formula. This should be interpreted as a feature selection workflow demonstration, not as a causal business conclusion.
+
+## Visual Gallery
+
+![Dataset Overview Dashboard](outputs/dataset_overview_dashboard.png)
+
+![Spending Profit Relationships](outputs/spending_profit_relationships.png)
+
+![Correlation Heatmap](outputs/correlation_heatmap.png)
+
+![Model Metrics Summary](outputs/model_metrics_summary.png)
+
+![Feature Selection Comparison](outputs/feature_selection_performance_allinone.png)
+
+## Project Log
+
+[Project Log](LOG.md)

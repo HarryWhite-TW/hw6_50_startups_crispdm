@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>50 Startups Profit Prediction Dashboard</title>
+    <link rel="stylesheet" href="site/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar" aria-label="Project links">
+        <a href="README.md">README</a>
+        <a href="hw6.md">HW6 Report</a>
+        <a href="docs/HW6_TECHNICAL_WHITEPAPER.md">Whitepaper</a>
+        <a href="LOG.md">LOG</a>
+      </nav>
+      <div class="hero-grid">
+        <section class="hero-copy">
+          <p class="eyebrow">GitHub Homework Showcase</p>
+          <h1>50 Startups Profit Prediction</h1>
+          <p class="lead">
+            CRISP-DM machine learning workflow with an interactive Feature Selection
+            Comparison Dashboard for a synthetic 50 Startups-style dataset.
+          </p>
+          <div class="notice">
+            AI-generated synthetic dataset. Educational CRISP-DM workflow demonstration only.
+            Not real business research. No real-world causal claim.
+          </div>
+        </section>
+        <section class="hero-panel" aria-label="Project snapshot">
+          <div>
+            <span>Rows</span>
+            <strong>50</strong>
+          </div>
+          <div>
+            <span>Features</span>
+            <strong>4</strong>
+          </div>
+          <div>
+            <span>Target</span>
+            <strong>Profit</strong>
+          </div>
+          <div>
+            <span>Best FS</span>
+            <strong>SFS, k=4</strong>
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">CRISP-DM</p>
+          <h2>Machine Learning Workflow</h2>
+        </div>
+        <div class="steps">
+          <article><b>1</b><h3>Business Understanding</h3><p>Predict startup profit as a supervised regression teaching task.</p></article>
+          <article><b>2</b><h3>Data Understanding</h3><p>Inspect 50 synthetic records, missing values, columns, and summary statistics.</p></article>
+          <article><b>3</b><h3>Data Preparation</h3><p>Use numeric spending fields and one-hot encode the nominal State feature.</p></article>
+          <article><b>4</b><h3>Modeling</h3><p>Train a Linear Regression baseline inside a scikit-learn workflow.</p></article>
+          <article><b>5</b><h3>Evaluation</h3><p>Report R2, MAE, RMSE, and 5-fold cross-validation stability.</p></article>
+          <article><b>6</b><h3>Deployment</h3><p>Save project artifacts, plots, documentation, and this static dashboard.</p></article>
+        </div>
+      </section>
+
+      <section class="section split">
+        <div>
+          <p class="eyebrow">Dataset Overview</p>
+          <h2>Synthetic 50 Startups-style Data</h2>
+          <p>
+            The dataset contains spending fields, a categorical state field, and a numeric
+            profit target. It is intentionally generated for workflow demonstration and
+            reproducibility.
+          </p>
+          <ul class="facts">
+            <li><span>Rows</span><strong>50</strong></li>
+            <li><span>Input features</span><strong>R&D, Administration, Marketing, State</strong></li>
+            <li><span>Target</span><strong>Profit</strong></li>
+            <li><span>Scope</span><strong>Educational synthetic data</strong></li>
+          </ul>
+        </div>
+        <figure class="image-frame">
+          <img src="outputs/dataset_overview_dashboard.png" alt="Dataset overview dashboard" />
+        </figure>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">Interactive Data Explorer</p>
+          <h2>State Filter and Data View</h2>
+        </div>
+        <div class="control-row">
+          <label for="stateFilter">State</label>
+          <select id="stateFilter">
+            <option value="All">All States</option>
+            <option value="California">California</option>
+            <option value="Florida">Florida</option>
+            <option value="New York">New York</option>
+          </select>
+        </div>
+        <div class="dashboard-grid">
+          <div class="chart-card">
+            <h3>Average Profit by State</h3>
+            <canvas id="profitByStateChart"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>Filtered Spending Profile</h3>
+            <canvas id="spendingProfileChart"></canvas>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>State</th>
+                <th>Rows</th>
+                <th>Avg R&D Spend</th>
+                <th>Avg Marketing Spend</th>
+                <th>Avg Profit</th>
+              </tr>
+            </thead>
+            <tbody id="stateTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">Model Metrics</p>
+          <h2>Linear Regression Baseline</h2>
+        </div>
+        <div class="metrics" id="metricCards"></div>
+        <figure class="image-frame">
+          <img src="outputs/model_metrics_summary.png" alt="Model metrics summary" />
+        </figure>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">Feature Selection Comparison</p>
+          <h2>Five Ranking Methods, Same Linear Regression Model</h2>
+        </div>
+        <div class="dashboard-grid">
+          <div class="chart-card">
+            <h3>RMSE by Number of Features</h3>
+            <canvas id="rmseChart"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>R-squared by Number of Features</h3>
+            <canvas id="r2Chart"></canvas>
+          </div>
+        </div>
+        <figure class="image-frame">
+          <img src="outputs/feature_selection_performance_allinone.png" alt="Feature selection comparison" />
+        </figure>
+      </section>
+
+      <section class="section split">
+        <div>
+          <p class="eyebrow">Insight Summary</p>
+          <h2>What the Comparison Shows</h2>
+          <p>
+            R&D Spend and Marketing Spend usually appear near the top because the synthetic
+            generation formula gives them strong predictive signal. State adds a smaller
+            location-style adjustment, and Administration is comparatively weaker in this data.
+          </p>
+          <p>
+            The dashboard compares model behavior on a generated dataset. It does not claim
+            real-world startup causality or business truth.
+          </p>
+        </div>
+        <div class="link-panel">
+          <a href="README.md">README</a>
+          <a href="hw6.md">HW6 Report</a>
+          <a href="docs/HW6_TECHNICAL_WHITEPAPER.md">Technical Whitepaper</a>
+          <a href="LOG.md">Project LOG</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Synthetic 50 Startups-style dataset. Educational CRISP-DM workflow demonstration only.
+    </footer>
+
+    <script src="site/app.js"></script>
+  </body>
+</html>
