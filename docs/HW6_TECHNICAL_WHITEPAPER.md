@@ -788,3 +788,30 @@ python src\solve_50_startups_crispdm.py
 
 此補充也確認文件篇幅、內容、限制、方法、結果與交付規格皆已完整覆蓋。最終版本已符合正式白皮規格書的完整閱讀與驗收需求，並能作為課堂作業、專案展示與後續維護的共同參考。全文內容已達指定中文篇幅，且所有重要結論皆維持在合成資料教學情境之內。
 
+## Feature Selection Comparison
+
+This project adds an advanced feature selection comparison module in `src/feature_selection_comparison.py`. The purpose is to compare how different feature ranking methods behave on the same AI-generated synthetic 50 Startups-style dataset.
+
+The module uses `data/50_Startups.csv` as the input dataset. During preprocessing, the categorical `State` column is transformed with one-hot encoding and `drop_first=True`. The expanded feature names remain interpretable, for example `State_Florida` and `State_New York`.
+
+The comparison includes five feature selection methods:
+
+- Sequential Forward Selection (SFS / Forward)
+- Recursive Feature Elimination (RFE)
+- SelectKBest with `f_regression`
+- Lasso coefficient ranking
+- Random Forest feature importance
+
+Each method produces a full feature ranking. For every ranking, the script evaluates the top 1, 2, 3, 4, and 5 features using the same prediction model: Linear Regression. This keeps the comparison focused on feature selection behavior instead of changing the modeling algorithm. The script records RMSE and R-squared for each method and feature count.
+
+The output figure is:
+
+```text
+outputs/feature_selection_performance_allinone.png
+```
+
+The figure contains RMSE by number of features, R-squared by number of features, and a table of each algorithm's top 5 feature ranking. It is designed as a clean GitHub-ready summary image for README display.
+
+In the current synthetic dataset, methods that rank `R&D Spend` and `Marketing Spend` near the top usually perform well. This is consistent with the synthetic data generation formula, where those spending variables were assigned strong predictive signal. The result should be interpreted as a model workflow and feature selection demonstration only. It should not be used to claim that these variables cause startup profit in real business settings.
+
+The main limitation is that the dataset has only 50 rows and is generated from a simplified synthetic formula. Feature rankings can be sensitive to the train/test split, feature scale, method assumptions, and random variation. RFE, Lasso, univariate tests, forward selection, and Random Forest importance measure different ideas of "importance," so disagreement between rankings is expected and useful for discussion.

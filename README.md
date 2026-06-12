@@ -1,5 +1,7 @@
 ![50 Startups Profit Prediction CRISP-DM Workflow Showcase](assets/readme_hero.png)
 
+![Feature Selection Comparison - RMSE and R-squared by Number of Features](outputs/feature_selection_performance_allinone.png)
+
 # Synthetic 50 Startups CRISP-DM Startup Profit Prediction
 
 ## Project Overview
@@ -128,6 +130,12 @@ python src\generate_synthetic_startups.py
 python src\solve_50_startups_crispdm.py
 ```
 
+5. Run the advanced feature selection comparison.
+
+```bash
+python src\feature_selection_comparison.py
+```
+
 ## Results
 
 After running the scripts, the following files are generated:
@@ -149,3 +157,23 @@ Feature selection performance plot:
 ![Feature Selection Performance](outputs/feature_selection_performance.png)
 
 These results show that the workflow runs successfully on reproducible synthetic teaching data. They should not be interpreted as real business research findings.
+
+## Advanced Feature Selection Comparison
+
+This project also includes an advanced comparison of five feature selection methods:
+
+- Sequential Forward Selection (SFS / Forward)
+- RFE
+- SelectKBest
+- Lasso
+- Random Forest feature importance
+
+The script expands `State` with one-hot encoding and `drop_first=True`, then compares the top 1 through top 5 ranked features for each method using the same Linear Regression model. RMSE and R2 are shown together so the chart can compare both prediction error and explained variance.
+
+```bash
+python src\feature_selection_comparison.py
+```
+
+![Feature Selection Comparison](outputs/feature_selection_performance_allinone.png)
+
+In the current synthetic dataset, methods that rank `R&D Spend` and `Marketing Spend` early tend to perform well because those variables were designed to carry strong predictive signal in the synthetic generation formula. This should be interpreted as a feature selection workflow demonstration, not as a causal business conclusion.

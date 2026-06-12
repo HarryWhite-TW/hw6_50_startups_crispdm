@@ -123,6 +123,28 @@ The plot compares model performance using different feature sets:
 
 In this synthetic dataset, `R&D Spend` has strong predictive ability because the generated formula was designed that way. This does not mean that real-world R&D spending directly causes profit to increase.
 
+### Feature Selection Comparison
+
+An additional script, `src/feature_selection_comparison.py`, compares five feature selection methods on the same synthetic dataset:
+
+- Sequential Forward Selection (SFS / Forward)
+- RFE
+- SelectKBest
+- Lasso
+- Random Forest feature importance
+
+Before feature selection, `State` is converted with one-hot encoding and `drop_first=True`, which creates interpretable expanded features such as `State_Florida` and `State_New York`. Each method creates a complete feature ranking. Then the top 1, 2, 3, 4, and 5 features from each ranking are evaluated with the same Linear Regression model.
+
+The output chart is saved as:
+
+```text
+outputs/feature_selection_performance_allinone.png
+```
+
+The chart shows RMSE and R2 by number of selected features, plus a top-5 ranking table for all methods. In the current synthetic dataset, feature sets that include `R&D Spend` and `Marketing Spend` early usually perform better because those variables have strong signal in the synthetic data generation formula. The best observed result from the comparison is SFS / Forward with 4 features: `R&D Spend`, `Marketing Spend`, `State_New York`, and `Administration`.
+
+This comparison is useful because it shows that different feature selection methods can produce different rankings. However, the result should not be treated as evidence of real-world causality. It only explains model behavior on this reproducible synthetic teaching dataset.
+
 ## 6. Deployment
 
 The final trained model pipeline is saved as:
